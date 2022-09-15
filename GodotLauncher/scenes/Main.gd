@@ -1,16 +1,16 @@
-extends Node2D
+extends Control
 
 var select_version = ""
 enum proxy {ghproxy,fastgithub}
 
 func _ready():
 	for button in $VersionPanel/VersionList.get_children():
-		button.connect("pressed",self,"_on_download_pressed",[button.text])
-	$Panel/Panel/Mirror/OptionButton.connect("item_selected",self,"_on_change_proxy")
+		button.connect("pressed",Callable(self,"_on_download_pressed").bind(button.text))
+	$Panel/Panel/Mirror/OptionButton.connect("item_selected",Callable(self,"_on_change_proxy"))
 	pass
 	
 func _on_Run_pressed():
-	var exit_code = OS.execute("Main.exe",["run",select_version],false)
+	var exit_code = OS.execute("Main.exe", ["run", select_version], [], false)
 	#if exit_code != OK: print_debug("出错了")
 	pass
 	
@@ -18,10 +18,10 @@ func _on_Run_pressed():
 func _on_download_pressed(version):
 	#print_debug(version)
 	var conv_version = "v" + version
-	var exit_code = OS.execute("Main.exe",["download_game",conv_version],true)
+	var exit_code = OS.execute("Main.exe", ["download_game", conv_version], [], true)
 	if exit_code != OK: OS.alert("出错了")
 	elif exit_code == OK: OS.alert("下载完成")
-	exit_code = OS.execute("Main.exe",["install_game",conv_version],true)
+	exit_code = OS.execute("Main.exe", ["install_game",conv_version], [], true)
 	if exit_code != OK:
 		print_debug("出错了")
 	elif exit_code == OK:
@@ -44,7 +44,7 @@ func _on_change_proxy(p_proxy):
 		proxy.fastgithub:
 			choosed_proxy = "fastgithub"
 			
-	var exit = OS.execute("Main.exe",["change_proxy",choosed_proxy],true)
+	var exit = OS.execute("Main.exe", ["change_proxy", choosed_proxy], [], true)
 	if exit != OK: print_debug("出错了")
 	elif exit == OK: OS.alert("已切换代理")
 	pass
@@ -53,7 +53,7 @@ func _on_change_proxy(p_proxy):
 
 func _on_ListGame_pressed():
 	var output = []
-	var exit_code = OS.execute("Main.exe",["list_installed"],true,output)
+	var exit_code = OS.execute("Main.exe",["list_installed"], [], true)
 	if exit_code != OK: OS.alert("出错了")
 	OS.shell_open("games")
 #	elif exit_code == OK:
@@ -78,7 +78,7 @@ func _on_GameList_pressed():
 	var dir = Directory.new()
 	var dirs = []
 	if dir.open(path) == OK:
-		dir.list_dir_begin()
+		dir.list_dir_begin() # TODOGODOT4 fill missing arguments https://github.com/godotengine/godot/pull/40547
 		var file_name = dir.get_next()
 		while file_name != "":
 			if dir.current_is_dir():

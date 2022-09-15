@@ -1,0 +1,438 @@
+[gd_scene load_steps=7 format=3 uid="uid://cqcoupci3ns1g"]
+
+[ext_resource type="Script" path="res://scenes/Main.gd" id="1_1lea2"]
+[ext_resource type="Texture2D" uid="uid://wpdwuk4x0tny" path="res://assets/images/ss_2.jpg" id="2_nu6jt"]
+[ext_resource type="Texture2D" uid="uid://bc4332uv47fua" path="res://assets/images/gooey_star_64.png" id="3_jpg62"]
+[ext_resource type="Script" path="res://scripts/VersionPanel.gd" id="4_o2yum"]
+[ext_resource type="Script" path="res://scripts/PP.gd" id="5_rd3gm"]
+[ext_resource type="Script" path="res://scripts/InstalledPanel.gd" id="6_fd4gw"]
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1lea2")
+
+[node name="panel" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_nu6jt")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="GameList" type="OptionButton" parent="."]
+layout_mode = 0
+offset_left = 813.0
+offset_top = 375.0
+offset_right = 987.0
+offset_bottom = 428.0
+
+[node name="Run" type="Button" parent="."]
+layout_mode = 0
+offset_left = 851.0
+offset_top = 512.0
+offset_right = 1003.0
+offset_bottom = 594.0
+text = "启动游戏"
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 32.0
+offset_right = 45.0
+offset_bottom = 60.0
+text = "游戏"
+
+[node name="Left" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_top = 62.0
+offset_right = 158.0
+offset_bottom = 280.0
+
+[node name="ListGame" type="Button" parent="Left"]
+layout_mode = 2
+offset_right = 158.0
+offset_bottom = 72.0
+text = "查看游戏"
+icon = ExtResource("3_jpg62")
+
+[node name="Version" type="Button" parent="Left"]
+visible = false
+layout_mode = 2
+offset_top = 74.0
+offset_right = 158.0
+offset_bottom = 144.0
+text = "版本列表"
+icon = ExtResource("3_jpg62")
+
+[node name="Downlaod" type="Button" parent="Left"]
+layout_mode = 2
+offset_top = 76.0
+offset_right = 158.0
+offset_bottom = 148.0
+text = "下载"
+icon = ExtResource("3_jpg62")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 298.0
+offset_right = 43.0
+offset_bottom = 326.0
+text = "通用"
+
+[node name="Left2" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = -1.0
+offset_top = 334.0
+offset_right = 157.0
+offset_bottom = 552.0
+
+[node name="GlobalSet" type="Button" parent="Left2"]
+layout_mode = 2
+offset_right = 158.0
+offset_bottom = 72.0
+text = "全局设置"
+icon = ExtResource("3_jpg62")
+
+[node name="VersionPanel" type="Panel" parent="."]
+visible = false
+self_modulate = Color(1, 1, 1, 0.745098)
+layout_mode = 0
+offset_right = 1042.0
+offset_bottom = 647.0
+script = ExtResource("4_o2yum")
+
+[node name="VersionList" type="VBoxContainer" parent="VersionPanel"]
+layout_mode = 0
+offset_left = 182.0
+offset_top = 55.0
+offset_right = 773.0
+offset_bottom = 347.0
+
+[node name="Button2" type="Button" parent="VersionPanel/VersionList"]
+layout_mode = 2
+offset_right = 591.0
+offset_bottom = 70.0
+text = "3.2.0"
+icon = ExtResource("3_jpg62")
+
+[node name="Button3" type="Button" parent="VersionPanel/VersionList"]
+layout_mode = 2
+offset_top = 74.0
+offset_right = 591.0
+offset_bottom = 144.0
+text = "2.0.0"
+icon = ExtResource("3_jpg62")
+
+[node name="Button4" type="Button" parent="VersionPanel/VersionList"]
+layout_mode = 2
+offset_top = 148.0
+offset_right = 591.0
+offset_bottom = 218.0
+text = "1.6.0"
+icon = ExtResource("3_jpg62")
+
+[node name="Button5" type="Button" parent="VersionPanel/VersionList"]
+layout_mode = 2
+offset_top = 222.0
+offset_right = 591.0
+offset_bottom = 292.0
+text = "1.3.0"
+icon = ExtResource("3_jpg62")
+
+[node name="Back" type="Button" parent="VersionPanel"]
+layout_mode = 0
+offset_right = 89.0
+offset_bottom = 57.0
+text = "<-"
+
+[node name="Panel" type="Panel" parent="."]
+visible = false
+self_modulate = Color(1, 1, 1, 0.745098)
+layout_mode = 0
+offset_right = 1023.0
+offset_bottom = 599.0
+script = ExtResource("5_rd3gm")
+
+[node name="Back" type="Button" parent="Panel"]
+layout_mode = 0
+offset_right = 89.0
+offset_bottom = 57.0
+text = "<-"
+
+[node name="Menu" type="VBoxContainer" parent="Panel"]
+layout_mode = 0
+offset_left = 91.0
+offset_top = 83.0
+offset_right = 237.0
+offset_bottom = 266.0
+
+[node name="Download" type="Button" parent="Panel/Menu"]
+layout_mode = 2
+offset_right = 146.0
+offset_bottom = 34.0
+text = "下载"
+
+[node name="Help" type="Button" parent="Panel/Menu"]
+layout_mode = 2
+offset_top = 38.0
+offset_right = 146.0
+offset_bottom = 72.0
+text = "帮助"
+
+[node name="About" type="Button" parent="Panel/Menu"]
+layout_mode = 2
+offset_top = 76.0
+offset_right = 146.0
+offset_bottom = 110.0
+text = "关于"
+
+[node name="Panel" type="Panel" parent="Panel"]
+layout_mode = 0
+offset_left = 268.0
+offset_top = 24.0
+offset_right = 991.0
+offset_bottom = 579.0
+
+[node name="Help" type="ScrollContainer" parent="Panel/Panel"]
+visible = false
+layout_mode = 0
+offset_left = 2.0
+offset_top = 1.0
+offset_right = 726.0
+offset_bottom = 558.0
+
+[node name="Label" type="Label" parent="Panel/Panel/Help"]
+layout_mode = 2
+offset_right = 427.0
+offset_bottom = 668.0
+text = "欢迎使用本启动器 下面是使用说明
+可以使用的参数列表
+
+help: 获取帮助
+例子: help
+
+init: 初始化启动器
+例子: init
+
+change_proxy: 更改在线代理
+例子: change_proxy fastgithub
+
+download_jre: 下载java
+例子: download_jre 8
+
+install_jre: 安装java
+例子: install_jre 8
+
+download_game: 下载游戏
+例子: download_game v3.0.0
+
+install_game: 安装游戏
+例子: install_game v3.0.0
+
+install_offical: 安装游戏到官方目录 你需要先设置offical.json中的内容
+例子: install_offical v3.0.0"
+
+[node name="Mirror" type="HBoxContainer" parent="Panel/Panel"]
+layout_mode = 0
+offset_left = 113.0
+offset_top = 4.0
+offset_right = 372.0
+offset_bottom = 44.0
+
+[node name="Label" type="Label" parent="Panel/Panel/Mirror"]
+layout_mode = 2
+offset_top = 6.0
+offset_right = 100.0
+offset_bottom = 34.0
+text = "版本列表源"
+
+[node name="OptionButton" type="OptionButton" parent="Panel/Panel/Mirror"]
+layout_mode = 2
+offset_left = 132.0
+offset_right = 240.0
+offset_bottom = 40.0
+
+[node name="OssDep" type="VBoxContainer" parent="Panel/Panel"]
+visible = false
+layout_mode = 0
+offset_left = 109.0
+offset_top = 72.0
+offset_right = 600.0
+offset_bottom = 176.0
+
+[node name="Label" type="Label" parent="Panel/Panel/OssDep"]
+layout_mode = 2
+offset_right = 491.0
+offset_bottom = 28.0
+text = "开源依赖"
+
+[node name="Godot" type="HBoxContainer" parent="Panel/Panel/OssDep"]
+layout_mode = 2
+offset_top = 32.0
+offset_right = 491.0
+offset_bottom = 66.0
+alignment = 2
+
+[node name="Label" type="Label" parent="Panel/Panel/OssDep/Godot"]
+layout_mode = 2
+offset_top = 3.0
+offset_right = 329.0
+offset_bottom = 31.0
+text = "Godot MIT 2014-2022 Godot贡献者"
+
+[node name="View" type="Button" parent="Panel/Panel/OssDep/Godot"]
+layout_mode = 2
+offset_left = 439.0
+offset_right = 491.0
+offset_bottom = 34.0
+size_flags_horizontal = 10
+size_flags_vertical = 0
+text = "查看"
+
+[node name="TerasologyNim" type="HBoxContainer" parent="Panel/Panel/OssDep"]
+layout_mode = 2
+offset_top = 70.0
+offset_right = 491.0
+offset_bottom = 104.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="Label" type="Label" parent="Panel/Panel/OssDep/TerasologyNim"]
+layout_mode = 2
+offset_top = 3.0
+offset_right = 435.0
+offset_bottom = 31.0
+text = "TerasologyLauncher-nim GPL3.0 小沙盒工作室"
+
+[node name="View" type="Button" parent="Panel/Panel/OssDep/TerasologyNim"]
+layout_mode = 2
+offset_left = 439.0
+offset_right = 491.0
+offset_bottom = 34.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "查看"
+
+[node name="InstalledPanel" type="Panel" parent="."]
+visible = false
+self_modulate = Color(1, 1, 1, 0.745098)
+layout_mode = 0
+offset_right = 1042.0
+offset_bottom = 647.0
+script = ExtResource("6_fd4gw")
+
+[node name="VersionList" type="VBoxContainer" parent="InstalledPanel"]
+layout_mode = 0
+offset_left = 182.0
+offset_top = 55.0
+offset_right = 773.0
+offset_bottom = 347.0
+
+[node name="v1" type="HBoxContainer" parent="InstalledPanel/VersionList"]
+layout_mode = 2
+offset_right = 591.0
+offset_bottom = 70.0
+
+[node name="Button2" type="Button" parent="InstalledPanel/VersionList/v1"]
+layout_mode = 2
+offset_right = 527.0
+offset_bottom = 70.0
+size_flags_horizontal = 3
+text = "3.2.0"
+icon = ExtResource("3_jpg62")
+
+[node name="Label" type="Label" parent="InstalledPanel/VersionList/v1"]
+layout_mode = 2
+offset_left = 531.0
+offset_top = 21.0
+offset_right = 591.0
+offset_bottom = 49.0
+text = "未安装"
+
+[node name="v2" type="HBoxContainer" parent="InstalledPanel/VersionList"]
+layout_mode = 2
+offset_top = 74.0
+offset_right = 591.0
+offset_bottom = 144.0
+
+[node name="Button3" type="Button" parent="InstalledPanel/VersionList/v2"]
+layout_mode = 2
+offset_right = 527.0
+offset_bottom = 70.0
+size_flags_horizontal = 3
+text = "2.0.0"
+icon = ExtResource("3_jpg62")
+
+[node name="Label" type="Label" parent="InstalledPanel/VersionList/v2"]
+layout_mode = 2
+offset_left = 531.0
+offset_top = 21.0
+offset_right = 591.0
+offset_bottom = 49.0
+text = "未安装"
+
+[node name="v3" type="HBoxContainer" parent="InstalledPanel/VersionList"]
+layout_mode = 2
+offset_top = 148.0
+offset_right = 591.0
+offset_bottom = 218.0
+
+[node name="Button4" type="Button" parent="InstalledPanel/VersionList/v3"]
+layout_mode = 2
+offset_right = 527.0
+offset_bottom = 70.0
+size_flags_horizontal = 3
+text = "1.6.0"
+icon = ExtResource("3_jpg62")
+
+[node name="Label" type="Label" parent="InstalledPanel/VersionList/v3"]
+layout_mode = 2
+offset_left = 531.0
+offset_top = 21.0
+offset_right = 591.0
+offset_bottom = 49.0
+text = "未安装"
+
+[node name="v4" type="HBoxContainer" parent="InstalledPanel/VersionList"]
+layout_mode = 2
+offset_top = 222.0
+offset_right = 591.0
+offset_bottom = 292.0
+
+[node name="Button5" type="Button" parent="InstalledPanel/VersionList/v4"]
+layout_mode = 2
+offset_right = 527.0
+offset_bottom = 70.0
+size_flags_horizontal = 3
+text = "1.3.0"
+icon = ExtResource("3_jpg62")
+
+[node name="Label" type="Label" parent="InstalledPanel/VersionList/v4"]
+layout_mode = 2
+offset_left = 531.0
+offset_top = 21.0
+offset_right = 591.0
+offset_bottom = 49.0
+text = "未安装"
+
+[node name="Back" type="Button" parent="InstalledPanel"]
+layout_mode = 0
+offset_right = 89.0
+offset_bottom = 57.0
+text = "<-"
+
+[connection signal="pressed" from="VersionPanel/Back" to="VersionPanel" method="_on_Back_pressed"]
+[connection signal="pressed" from="Panel/Back" to="Panel" method="_on_Back_pressed"]
+[connection signal="pressed" from="Panel/Menu/Download" to="Panel" method="_on_Download_pressed"]
+[connection signal="pressed" from="Panel/Menu/Help" to="Panel" method="_on_Help_pressed"]
+[connection signal="pressed" from="Panel/Menu/About" to="Panel" method="_on_About_pressed"]
+[connection signal="pressed" from="InstalledPanel/Back" to="InstalledPanel" method="_on_Back_pressed"]

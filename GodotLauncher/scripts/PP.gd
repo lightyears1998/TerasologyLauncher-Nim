@@ -1,8 +1,8 @@
 extends Panel
 
 func _ready():
-	$Panel/OssDep/Godot/View.connect("pressed",self,"go_godot")
-	$Panel/OssDep/TerasologyNim/View.connect("pressed",self,"go_TerasologyLauncherNim")
+	$Panel/OssDep/Godot/View.connect("pressed",Callable(self,"go_godot"))
+	$Panel/OssDep/TerasologyNim/View.connect("pressed",Callable(self,"go_TerasologyLauncherNim"))
 	pass
 
 func go_godot():
